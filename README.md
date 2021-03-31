@@ -5,6 +5,7 @@ st is a simple terminal emulator for X which sucks less (st is created by the [s
 + font2 (to allow setting more than one font, useful when the default font has missing glyphs)
 + scrollback (scrollback through terminal using Shift+PageUp/PageDown.)
 + scrollback mouse altscreen (allows scrolling using Shift+MouseWheel.)
++ dynamic-cursor-color (Swaps the colors of your cursor and the character you're currently on (much like alacritty).)
 
 # How to install st?
 
