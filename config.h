@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=17:antialias=true:autohint=true";
+static char *font = "FiraCode Nerd Font:pixelsize=17:antialias=true:autohint=true";
 static char *font2 = "JoyPixels:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
@@ -95,48 +95,54 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.95, alphaUnfocused = 0.85;
+float alpha = 0.92, alphaUnfocused = 0.75;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+        /* 8 normal colors */
+        "#3b4252", /* black   */
+		"#bf616a", /* red     */
+		"#a3be8c", /* green   */
+		"#ebcb8b", /* yellow  */
+		"#81a1c1", /* blue    */
+		"#b48ead", /* magenta */
+		"#88c0d0", /* cyan    */
+		"#e5e9f0", /* white   */
+ 
+     	/* 8 bright colors */
+        "#4c566a", /* black   */
+		"#bf616a", /* red     */
+		"#a3be8c", /* green   */
+		"#ebcb8b", /* yellow  */
+		"#81a1c1", /* blue    */
+		"#b48ead", /* magenta */
+		"#8fbcbb", /* cyan    */
+		"#eceff4", /* white   */
 
-  /* 8 normal colors */
-  [0] = "#2e3436", /* black   */
-  [1] = "#a31604", /* red     */
-  [2] = "#447241", /* green   */
-  [3] = "#c1951a", /* yellow  */
-  [4] = "#425387", /* blue    */
-  [5] = "#965d98", /* magenta */
-  [6] = "#06989a", /* cyan    */
-  [7] = "#d3d7cf", /* white   */
-
-  /* 8 bright colors */
-  [8]  = "#555753", /* black   */
-  [9]  = "#c60001", /* red     */
-  [10] = "#27a343", /* green   */
-  [11] = "#d5a30e", /* yellow  */
-  [12] = "#4a5a8d", /* blue    */
-  [13] = "#893c8c", /* magenta */
-  [14] = "#12bccb", /* cyan    */
-  [15] = "#eeeeec", /* white   */
-
-  [255] = 0,
-
-  /* special colors */
-  [256] = "#add8e6", /* cursor */
-  [257] = "#555555", /* rev cursor */
-  [258] = "#000000", /* background */
-  [259] = "#ffffff", /* foreground */
+        [255] = 0,
+        /* more colors can be added after 255 to use with DefaultXX */
+		"#2e3440", /* background */
+		"#d8dee9", /* foreground */
 };
+
+/*
+* Default colors (colorname index)
+* foreground, background, cursor, reverse cursor
+*/
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+static unsigned int defaultcs = 257;
+static unsigned int defaultrcs = 256;
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
- */
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
-static unsigned int defaultcs = 256;
-static unsigned int defaultrcs = 257;
+ *
+*unsigned int defaultfg = 7;
+*unsigned int defaultbg = 0;
+*static unsigned int defaultcs = 256;
+*static unsigned int defaultrcs = 257;
+*/
 
 unsigned int bg = 16, bgUnfocused = 16;
 
