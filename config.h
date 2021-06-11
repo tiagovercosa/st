@@ -5,9 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode Nerd Font:pixelsize=17:antialias=true:autohint=true";
-static char *font2 = "JoyPixels:pixelsize=16:antialias=true:autohint=true";
-static int borderpx = 4;
+static char *font = "JetBrainsMono Nerd Font:pixelsize=17:antialias=true:autohint=true";
+static char *font2 = "JoyPixels:pixelsize=15:antialias=true:autohint=true";
+static int borderpx = 2;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -95,33 +95,35 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.99, alphaUnfocused = 0.85;
+float alpha = 1.00, alphaUnfocused = 0.85;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-  [0] = "#263238", /* black   */
-  [1] = "#ff9800", /* red     */
-  [2] = "#8bc34a", /* green   */
-  [3] = "#ffc107", /* yellow  */
-  [4] = "#03a9f4", /* blue    */
-  [5] = "#e91e63", /* magenta */
-  [6] = "#009688", /* cyan    */
-  [7] = "#cfd8dc", /* white   */
+    /* 8 normal colors */
+	"#3b4252", /* black   */
+	"#bf616a", /* red     */
+	"#a3be8c", /* green   */
+	"#ebcb8b", /* yellow  */
+	"#81a1c1", /* blue    */
+	"#b48ead", /* magenta */
+	"#88c0d0", /* cyan    */
+	"#e5e9f0", /* white   */
 
-  /* 8 bright colors */
-  [8]  = "#37474f", /* black   */
-  [9]  = "#ffa74d", /* red     */
-  [10] = "#9ccc65", /* green   */
-  [11] = "#ffa000", /* yellow  */
-  [12] = "#81d4fa", /* blue    */
-  [13] = "#ad1457", /* magenta */
-  [14] = "#26a69a", /* cyan    */
-  [15] = "#eceff1", /* white   */
+	/* 8 bright colors */
+	"#4c566a", /* black   */
+	"#bf616a", /* red     */
+	"#a3be8c", /* green   */
+	"#ebcb8b", /* yellow  */
+	"#81a1c1", /* blue    */
+	"#b48ead", /* magenta */
+	"#8fbcbb", /* cyan    */
+	"#eceff4", /* white   */
 
-  /* special colors */
-  [256] = "#263238", /* background */
-  [257] = "#eceff1", /* foreground */
+    [255] = 0,
+
+    /* special colors */
+    [256] = "#2e3440", /* background */
+    [257] = "#d8dee9", /* foreground */
 };
 
 /*
