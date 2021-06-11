@@ -12,12 +12,9 @@ st is a simple terminal emulator for X which sucks less (st is created by the [s
 
 Download the source code from this repository or, preferably, use a git clone:
 
-```
 	git clone https://github.com/tiagovercosa/st
 	cd st
     sudo make clean install
-    
-```
 
 NOTE: Installing st will overwrite your existing st installation so make a backup of your current config if you need.
 
