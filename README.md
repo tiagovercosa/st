@@ -1,7 +1,7 @@
 # My st (simple terminal) build
 
 st is a simple terminal emulator for X which sucks less (st is created by the [suckless](https://suckless.org) team).  This is my personal build of st, based on DistroTube's build.  I used some patches in this build to make st more like myself.  The patches I added to this build include:
-+ alpha+[focus](focus) (for transparency)
++ alpha+focus (for transparency)
 + font2 (to allow setting more than one font, useful when the default font has missing glyphs)
 + scrollback (scrollback through terminal using Shift+PageUp/PageDown)
 + scrollback mouse altscreen (allows scrolling using Shift+MouseWheel)
