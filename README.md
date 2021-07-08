@@ -7,6 +7,7 @@ st is a simple terminal emulator for X which sucks less (st is created by the [s
 + scrollback mouse altscreen (allows scrolling using Shift+MouseWheel)
 + dynamic-cursor-color (Swaps the colors of your cursor and the character you're currently on (much like alacritty))
 + Ligature support (patch adds proper drawing of ligatures)
++ Blinking Cursor (This patch allows the use of a blinking cursor.)
 
 # How to install st?
 
