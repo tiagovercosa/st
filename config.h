@@ -152,15 +152,6 @@ static unsigned int defaultunderline = 7;
 unsigned int bg = 256, bgUnfocused = 256;
 
 /*
-<<<<<<< HEAD
- * Default shape of cursor
- * 2: Block ("█")
- * 4: Underline ("_")
- * 6: Bar ("|")
- * 7: Snowman ("☃")
- */
-static unsigned int cursorshape = 2;
-=======
 * https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
 * Default style of cursor
 * 0: Blinking block
@@ -176,7 +167,6 @@ static unsigned int cursorshape = 2;
 
 static unsigned int cursorstyle = 3;
 static Rune stcursor = 0x2603; /* snowman (U+2603) */
->>>>>>> dev
 
 /*
  * Default columns and rows numbers
