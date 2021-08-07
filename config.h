@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "CascadiaCode PL:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font Mono:pixelsize=16:antialias=true:autohint=true";
 static char *font2 = "JoyPixels:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
@@ -122,8 +122,8 @@ static const char *colorname[] = {
 
     [255] = 0,
 
-    /* special colors #2d3743*/
-    [256] = "#2e3440", /* background */
+    /* special colors #2e3440 #2d3743*/
+    [256] = "#263238", /* background */
     [257] = "#d8dee9", /* foreground */
 };
 
