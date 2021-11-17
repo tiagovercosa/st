@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font Mono:pixelsize=16:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font:pixelsize=15pt:antialias=true:autohint=true";
 static char *font2 = "JoyPixels:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
@@ -95,36 +95,36 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 1.00, alphaUnfocused = 0.80;
+float alpha = 1., alphaUnfocused = 0.85;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
-    /* 8 normal colors */
-    [0] =	"#3b4252", /* black   */
-    [1] =	"#bf616a", /* red     */
-    [2] =	"#a3be8c", /* green   */
-    [3] =	"#ebcb8b", /* yellow  */
-    [4] =	"#81a1c1", /* blue    */
-    [5] =	"#b48ead", /* magenta */
-    [6] =	"#88c0d0", /* cyan    */
-    [7] =	"#e5e9f0", /* white   */
+  /* 8 normal colors */
+  [0] = "#232627", /* black   */
+  [1] = "#ed1515", /* red     */
+  [2] = "#11d116", /* green   */
+  [3] = "#f67400", /* yellow  */
+  [4] = "#1d99f3", /* blue    */
+  [5] = "#9b59b6", /* magenta */
+  [6] = "#80b1d3", /* cyan    */
+  [7] = "#fcfcfc", /* white   */
 
-    /* 8 bright colors */
-    [8] = "#4c566a", /* black   */
-    [9] =	"#bf616a", /* red     */
-    [10] =	"#a3be8c", /* green   */
-    [11] =	"#ebcb8b", /* yellow  */
-    [12] =	"#81a1c1", /* blue    */
-    [13] =	"#b48ead", /* magenta */
-    [14] =	"#8fbcbb", /* cyan    */
-    [15] =	"#eceff4", /* white   */
+  /* 8 bright colors */
+  [8]  = "#7f8c8d", /* black   */
+  [9]  = "#c0392b", /* red     */
+  [10] = "#1cdc9a", /* green   */
+  [11] = "#fdbc4b", /* yellow  */
+  [12] = "#3daee9", /* blue    */
+  [13] = "#8e44ad", /* magenta */
+  [14] = "#80b1d3", /* cyan    */
+  [15] = "#ffffff", /* white   */
 
-    [255] = 0,
+  [255] = 0,
 
-    /* special colors #2e3440 #2d3743*/
-    [256] = "#263238", /* background */
-    [257] = "#d8dee9", /* foreground */
+  /* special colors */
+  [256] = "#1a1b26", /* background */
+  [257] = "#fcfcfc", /* foreground */
 };
 
 /*
@@ -165,7 +165,7 @@ unsigned int bg = 256, bgUnfocused = 256;
 * 8: Steady st cursor
 */
 
-static unsigned int cursorstyle = 4;
+static unsigned int cursorstyle = 1;
 static Rune stcursor = 0x2603; /* snowman (U+2603) */
 
 /*
@@ -230,8 +230,8 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ MODKEY,               XK_k,           kscrollup,      {.i =  1} },
 	{ MODKEY,               XK_j,           kscrolldown,    {.i =  1} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ MODKEY,               XK_u,           kscrollup,      {.i = -1} },
+	{ MODKEY,               XK_d,           kscrolldown,    {.i = -1} },
 };
 
 /*
