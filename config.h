@@ -5,8 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "CascadiaCode PL:pixelsize=16pt:antialias=true:autohint=true";
-static char *font2 = "JoyPixels:pixelsize=15:antialias=true:autohint=true";
+static char *font = "CascadiaCode PL:pixelsize=14:antialias=true:autohint=true";
+/* Spare fonts */
+static char *font2[] = {
+	"JoyPixels:pixelsize=15:antialias=true:autohint=true",
+/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
+	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true",
+};
+
 static int borderpx = 2;
 
 /*
@@ -95,78 +101,64 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.95, alphaUnfocused = 0.80;
+float alpha = 0.99, alphaUnfocused = 0.85;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
+	/* 8 normal colors */
+    [0] = "#414868", /* black   */
+    [1] = "#f7768e", /* red     */
+    [2] = "#9ece6a", /* green   */
+    [3] = "#e0af68", /* yellow  */
+    [4] = "#7aa2f7", /* blue    */
+    [5] = "#bb9af7", /* magenta */
+    [6] = "#7dcfff", /* cyan    */
+    [7] = "#a9b1d6", /* white   */
 
-  /* 8 normal colors */
-  [0] = "#232627", /* black   */
-  [1] = "#ed1515", /* red     */
-  [2] = "#11d116", /* green   */
-  [3] = "#f67400", /* yellow  */
-  [4] = "#1d99f3", /* blue    */
-  [5] = "#9b59b6", /* magenta */
-  [6] = "#80b1d3", /* cyan    */
-  [7] = "#fcfcfc", /* white   */
+	/* 8 bright colors */
+    [8] = "#414868", /* black   */
+    [9] = "#f7768e", /* red     */
+    [10] = "#9ece6a", /* green   */
+    [11] = "#e0af68", /* yellow  */
+    [12] = "#7aa2f7", /* blue    */
+    [13] = "#bb9af7", /* magenta */
+    [14] = "#7dcfff", /* cyan    */
+    [15] = "#c0caf5", /* white   */
 
-  /* 8 bright colors */
-  [8]  = "#7f8c8d", /* black   */
-  [9]  = "#c0392b", /* red     */
-  [10] = "#1cdc9a", /* green   */
-  [11] = "#fdbc4b", /* yellow  */
-  [12] = "#3daee9", /* blue    */
-  [13] = "#8e44ad", /* magenta */
-  [14] = "#80b1d3", /* cyan    */
-  [15] = "#ffffff", /* white   */
+	[255] = 0,
 
-  [255] = 0,
-
-  /* special colors */
-  [256] = "#1a1b26", /* background */
-  [257] = "#fcfcfc", /* foreground */
+	/* more colors can be added after 255 to use with DefaultXX */
+    [256] = "#1a1b26", /* background */
+    [257] = "#98d1ce", /* foreground */
+	"gray90", /* default foreground colour */
+	"black", /* default background colour */
 };
 
-/*
-* Default colors (colorname index)
-* foreground, background, cursor, reverse cursor
-*/
-unsigned int defaultfg = 257;
-unsigned int defaultbg = 256;
-static unsigned int defaultcs = 257;
-static unsigned int defaultrcs = 256;
-
-static unsigned int defaultitalic = 7;
-static unsigned int defaultunderline = 7;
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
- *
-*unsigned int defaultfg = 7;
-*unsigned int defaultbg = 0;
-*static unsigned int defaultcs = 256;
-*static unsigned int defaultrcs = 257;
-*/
-
+ */
+unsigned int defaultfg = 258;
+unsigned int defaultbg = 259;
+unsigned int defaultcs = 256;
+static unsigned int defaultrcs = 257;
 unsigned int bg = 256, bgUnfocused = 256;
 
 /*
-* https://invisible-island.net/xterm/ctlseqs/ctlseqs.html#h4-Functions-using-CSI-_-ordered-by-the-final-character-lparen-s-rparen:CSI-Ps-SP-q.1D81
-* Default style of cursor
-* 0: Blinking block
-* 1: Blinking block (default)
-* 2: Steady block ("█")
-* 3: Blinking underline
-* 4: Steady underline ("_")
-* 5: Blinking bar
-* 6: Steady bar ("|")
-* 7: Blinking st cursor
-* 8: Steady st cursor
-*/
+ * Default shape of cursor
+ * 2: Block ("█")
+ * 4: Underline ("_")
+ * 6: Bar ("|")
+ * 7: Snowman ("☃")
+ */
+static unsigned int cursorshape = 2;
 
-static unsigned int cursorstyle = 1;
-static Rune stcursor = 0x2603; /* snowman (U+2603) */
+/*
+ * Whether to use pixel geometry or cell geometry
+ */
+
+static Geometry geometry = CellGeometry;
 
 /*
  * Default columns and rows numbers
@@ -174,6 +166,13 @@ static Rune stcursor = 0x2603; /* snowman (U+2603) */
 
 static unsigned int cols = 80;
 static unsigned int rows = 24;
+
+/*
+ * Default width and height (including borders!)
+ */
+
+static unsigned int width = 564;
+static unsigned int height = 364;
 
 /*
  * Default colour and shape of the mouse cursor
@@ -201,9 +200,9 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
 	/* mask                 button   function        argument       release */
+	{ XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},      0, /* !alt */ -1 },
+	{ XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},      0, /* !alt */ -1 },
 	{ XK_ANY_MOD,           Button2, selpaste,       {.i = 0},      1 },
-  { XK_ANY_MOD,           Button4, kscrollup,      {.i = 1},      0, /* !alt */ -1 },
-  { XK_ANY_MOD,           Button5, kscrolldown,    {.i = 1},      0, /* !alt */ -1 },
 	{ ShiftMask,            Button4, ttysend,        {.s = "\033[5;2~"} },
 	{ XK_ANY_MOD,           Button4, ttysend,        {.s = "\031"} },
 	{ ShiftMask,            Button5, ttysend,        {.s = "\033[6;2~"} },
