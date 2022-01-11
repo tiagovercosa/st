@@ -7,15 +7,23 @@ st is a simple terminal emulator for X which sucks less (st is created by the [s
 + scrollback mouse altscreen (allows scrolling using Shift+MouseWheel)
 + dynamic-cursor-color (Swaps the colors of your cursor and the character you're currently on (much like alacritty))
 + Ligature support (patch adds proper drawing of ligatures)
-+ Blinking Cursor (This patch allows the use of a blinking cursor.)
++ Anysize(this patch allows st to resize to any pixel size)
++ Anygeometry (This patch allows you to set st's width and height as pixels instead of cells)
++ CSI_22_23 (This patch adds support for CSI escape sequences 22 and 23)
++ Hidecursor (Hide the X cursor whenever a key is pressed and show it back when the mouse is moved in the terminal window.)
 
 # How to install st?
 
 Download the source code from this repository or, preferably, use a git clone:
 
-	git clone https://github.com/tiagovercosa/st
-	cd st
-    sudo make clean install
+```
+git clone https://github.com/tiagovercosa/st
+
+cd st
+
+sudo make clean install
+```
+
 
 NOTE: Installing st will overwrite your existing st installation so make a backup of your current config if you need.
 
