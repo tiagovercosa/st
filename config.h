@@ -5,11 +5,11 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Hack Nerd Font:pixelsize=14:antialias=true:autohint=true";
+static char *font = "FiraCode Nerd Font Mono:pixelsize=19:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
-	"JoyPixels:pixelsize=14:antialias=true:autohint=true",
-	"FontAwesome:pixelsize=14:antialias=true:autohint=true",
+	"JoyPixels:pixelsize=15:antialias=true:autohint=true",
+	"FontAwesome:pixelsize=15:antialias=true:autohint=true",
 	/* "Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
 	/* "Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 };
