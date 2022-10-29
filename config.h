@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "FiraCode Nerd Font Mono:pixelsize=19:antialias=true:autohint=true";
+static char *font = "Iosevka SS08 Medium:pixelsize=20:antialias=true:autohint=true";
 /* Spare fonts */
 static char *font2[] = {
 	"JoyPixels:pixelsize=15:antialias=true:autohint=true",
